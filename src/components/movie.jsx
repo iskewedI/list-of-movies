@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class Movie extends Component {
   render() {
-    const { _id, title, genre, stock, rate, children } = this.props;
+    const { children, data } = this.props;
+    const { title, genre, numberInStock: stock, dailyRentalRate: rate } = data;
     return (
       <tr>
         <td>{title}</td>
