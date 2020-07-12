@@ -38,40 +38,21 @@ class Movies extends Component {
               {movies.map((movie) => (
                 <Movie
                   key={movie._id}
-                  props={{
-                    _id: movie._id,
-                    title: movie.title,
-                    genre: movie.genre.name,
-                    stock: movie.numberInStock,
-                    rate: movie.dailyRentalRate,
-                    handleDelete: this.handleDelete,
-                  }}
-                />
+                  _id={movie._id}
+                  title={movie.title}
+                  genre={movie.genre.name}
+                  stock={movie.numberInStock}
+                  rate={movie.dailyRentalRate}
+                >
+                  <button
+                    onClick={() => this.handleDelete(movie._id)}
+                    className="btn btn-sm btn-danger"
+                  >
+                    Delete
+                  </button>
+                </Movie>
               ))}
             </tbody>
-            {/* <tr className="container">
-              <hr />
-              <h4 key="Titles" className="row">
-                <div className="col-sm">Title</div>
-                <div className="col-sm">Genre</div>
-                <div className="col-sm">Stock</div>
-                <div className="col-sm">Rating</div>
-              </h4>
-              <hr />
-              {movies.map((movie) => (
-                <Movie
-                  key={movie._id}
-                  props={{
-                    _id: movie._id,
-                    title: movie.title,
-                    genre: movie.genre.name,
-                    stock: movie.numberInStock,
-                    rate: movie.dailyRentalRate,
-                    handleDelete: this.handleDelete,
-                  }}
-                />
-              ))}
-            </tr> */}
           </table>
         )}
       </React.Fragment>
