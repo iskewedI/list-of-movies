@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import Movie from "./movie";
-import { getMovies, deleteMovie } from "../services/fakeMovieService";
+import {
+  getMovies,
+  deleteMovie,
+  doLikeMovie,
+} from "../services/fakeMovieService";
+import Like from "./like";
 
 class Movies extends Component {
   state = {
     movies: getMovies(),
-    titles: ["Title", "Genre", "Stock", "Rate", ""],
+    titles: ["Title", "Genre", "Stock", "Rate", "", ""],
     btnStyle: "btn btn-sm btn-danger",
   };
 
@@ -21,6 +26,15 @@ class Movies extends Component {
     deleteMovie(movieId);
     this.setState({ movies: getMovies() });
   };
+  handleLike = (movie) => {
+    // const movies = [...this.state.movies];
+    // const index = movies.indexOf(movie);
+    // movies[index] = { ...movies[index] };
+    // movies[index].liked = !movies[index].liked;
+    doLikeMovie(movie._id);
+    this.setState(getMovies());
+  };
+
   render() {
     const { movies, titles, btnStyle } = this.state;
     return (
@@ -30,14 +44,18 @@ class Movies extends Component {
           <table className="table">
             <thead>
               <tr>
-                {titles.map((title) => (
-                  <th key={title}>{title}</th>
+                {titles.map((title, index) => (
+                  <th key={index}>{title}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {movies.map((movie) => (
-                <Movie key={movie._id} data={movie}>
+                <Movie key={movie._id} data={movie} onClick={this.handleClick}>
+                  <Like
+                    liked={movie.liked}
+                    onClick={() => this.handleLike(movie)}
+                  />
                   <button
                     onClick={() => this.handleDelete(movie._id)}
                     className={btnStyle}

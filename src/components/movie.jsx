@@ -1,19 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Movie extends Component {
-  render() {
-    const { children, data } = this.props;
-    const { title, genre, numberInStock: stock, dailyRentalRate: rate } = data;
-    return (
-      <tr>
-        <td>{title}</td>
-        <td>{genre}</td>
-        <td>{stock}</td>
-        <td>{rate}</td>
-        <td>{children}</td>
-      </tr>
-    );
-  }
-}
+const _ID = "_id";
+const Movie = ({ children, data }) => {
+  const labels = [
+    ...Object.values(data).filter((label) => data[_ID] !== label),
+  ];
+  return (
+    <tr>
+      {labels.map((label, index) => (
+        <td key={index}>{label}</td>
+      ))}
+      {children.map((child, index) => (
+        <td key={index}>{child}</td>
+      ))}
+    </tr>
+  );
+};
 
 export default Movie;
