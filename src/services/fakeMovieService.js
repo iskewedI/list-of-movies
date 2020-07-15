@@ -4,7 +4,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd471815",
     title: "Terminator",
-    genre: "Action",
+    genre: { _id: "1111", name: "Action" },
     numberInStock: 6,
     dailyRentalRate: 2.5,
     liked: false,
@@ -12,7 +12,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd471816",
     title: "Die Hard",
-    genre: "Action",
+    genre: { _id: "1111", name: "Action" },
     numberInStock: 5,
     dailyRentalRate: 2.5,
     liked: false,
@@ -20,7 +20,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd471817",
     title: "Get Out",
-    genre: "Thriller",
+    genre: { _id: "2222", name: "Thriller" },
     numberInStock: 8,
     dailyRentalRate: 3.5,
     liked: false,
@@ -28,7 +28,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd471819",
     title: "Trip to Italy",
-    genre: "Comedy",
+    genre: { _id: "3333", name: "Comedy" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
     liked: false,
@@ -36,7 +36,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd47181a",
     title: "Airplane",
-    genre: "Comedy",
+    genre: { _id: "3333", name: "Comedy" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
     liked: false,
@@ -44,7 +44,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd47181b",
     title: "Wedding Crashers",
-    genre: "Comedy",
+    genre: { _id: "3333", name: "Comedy" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
     liked: false,
@@ -52,7 +52,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
     title: "Gone Girl",
-    genre: "Thriller",
+    genre: { _id: "2222", name: "Thriller" },
     numberInStock: 7,
     dailyRentalRate: 4.5,
     liked: false,
@@ -60,7 +60,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd47181f",
     title: "The Sixth Sense",
-    genre: "Thriller",
+    genre: { _id: "2222", name: "Thriller" },
     numberInStock: 4,
     dailyRentalRate: 3.5,
     liked: false,
@@ -68,7 +68,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd471821",
     title: "The Avengers",
-    genre: "Action",
+    genre: { _id: "1111", name: "Action" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
     liked: false,
