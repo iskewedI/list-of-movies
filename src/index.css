@@ -16,3 +16,6 @@ code {
 h5 {
   margin-bottom: 1rem !important;
 }
+.clickable {
+  cursor: pointer;
+}

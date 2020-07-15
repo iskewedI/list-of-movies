@@ -13,14 +13,6 @@ import MoviesTable from "./moviesTable";
 class Movies extends Component {
   state = {
     allMovies: [],
-    titles: [
-      { name: "Title", path: "title" },
-      { name: "Genre", path: "genre.name" },
-      { name: "Stock", path: "numberInStock" },
-      { name: "Rate", path: "dailyRentalRate" },
-      { name: "", path: "" },
-      { name: "", path: "" },
-    ],
     pageSize: 4,
     selectedPage: 1,
     genres: [],
@@ -53,20 +45,14 @@ class Movies extends Component {
   handleSort = (sortColumn) => {
     this.setState({ sortColumn });
   };
-
-  render() {
+  getPagedData = () => {
     const {
       allMovies,
-      titles,
       pageSize,
       selectedPage,
-      genres,
       selectedGenre,
       sortColumn,
     } = this.state;
-    const count = allMovies.length;
-
-    if (count === 0) return <h5>There are no movies in the database</h5>;
 
     const filtered =
       selectedGenre && selectedGenre._id
@@ -76,6 +62,22 @@ class Movies extends Component {
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
     const movies = paginate(sorted, selectedPage, pageSize);
+
+    return { totalCount: filtered.length, data: movies };
+  };
+  render() {
+    const {
+      pageSize,
+      selectedPage,
+      genres,
+      sortColumn,
+      selectedGenre,
+    } = this.state;
+    const count = this.state.allMovies.length;
+
+    if (count === 0) return <h5>There are no movies in the database</h5>;
+
+    const { totalCount, data: movies } = this.getPagedData();
     return (
       <div className="row">
         <div className="col-3">
@@ -86,17 +88,16 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <h5>Showing {filtered.length} movies in the database.</h5>
+          <h5>Showing {totalCount} movies in the database.</h5>
           <MoviesTable
             movies={movies}
-            titles={titles}
             onLike={this.handleLike}
             onDelete={this.handleDelete}
             onSort={this.handleSort}
             sortColumn={sortColumn}
           />
           <Pagination
-            itemsCount={filtered.length}
+            itemsCount={totalCount}
             pageSize={pageSize}
             selectedPage={selectedPage}
             onPageChange={this.handlePageChange}
