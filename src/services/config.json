@@ -1,0 +1,7 @@
+{
+  "apiGenres": "http://localhost:3900/api/genres",
+  "apiMovies": "http://localhost:3900/api/movies",
+  "apiUsers": "http://localhost:3900/api/users",
+  "apiAuth": "http://localhost:3900/api/auth",
+  "sentryDsn": "https://530a1e1e3b3a4c619c1a4b138d3e83cd@o422169.ingest.sentry.io/5345026"
+}
