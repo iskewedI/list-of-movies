@@ -1,12 +1,13 @@
 import httpService from "./httpService";
-import { apiMovies } from "./config.json";
+
+const apiEndpoint = "/movies";
 
 function getMovieUrl(id) {
-  return `${apiMovies}/${id}`;
+  return `${apiEndpoint}/${id}`;
 }
 
 export function getMovies() {
-  return httpService.get(apiMovies);
+  return httpService.get(apiEndpoint);
 }
 
 export function getMovie(id) {
@@ -29,7 +30,7 @@ export function saveMovie(movie) {
     delete movieInDb._id;
     return httpService.put(getMovieUrl(movie._id), movieInDb);
   }
-  return httpService.post(apiMovies, movie);
+  return httpService.post(apiEndpoint, movie);
 }
 
 export function deleteMovie(id) {
